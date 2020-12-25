@@ -18,16 +18,16 @@
 
 ---
 ### ✌️시연
-  - 쿠키를활용한 방문횟수 저장
+  - 쿠키를활용한 방문횟수 저장  
 ![쿠키를활용한방문횟수](https://user-images.githubusercontent.com/65852909/103127816-5c467880-46d6-11eb-8081-3ba95f5ab110.gif)
 
-  - 방명록등록
+  - 방명록등록  
 ![방명록등록](https://user-images.githubusercontent.com/65852909/103127877-8ac45380-46d6-11eb-9165-55783266ceea.gif)
 
-  - 페이지 변환
+  - 페이지 변환  
 ![페이지변환](https://user-images.githubusercontent.com/65852909/103127904-9c0d6000-46d6-11eb-918b-4316b4a401bf.gif)
 
-  - 관리자로그인 및 방명록 삭제
+  - 관리자로그인 및 방명록 삭제  
 ![관리자로그인 및 방명록 삭제](https://user-images.githubusercontent.com/65852909/103127920-ab8ca900-46d6-11eb-9907-29c9bfcf38c2.gif)
 
 ---
