@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 레이어드 아키텍쳐를 구현하기 위하여 출력하는부분과 비지니스 로직이 실행되는 부분을 나눈다.
+	출력하는부분은 WebMvvContextConfiguration 이고, 비지니스 로직이 실행되는 부분은 ApplicationConfig, DBConfig 이다.
+	Web~~~은 DispatcherServlet으로 등록을 해준다 
+	비지니스 로직이 실행되는 부분은 해당 업무가 실행 될때만 사용하므로 listener로 ContextLoaderListener 등록해주고, context-param으로 참고할 클래스를 등록해준다
+ -->
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+		</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>kr.or.connect.guestbook.config.ApplicationConfig
+		</param-value>
+	</context-param>
+	<!-- 이 리스너가 실행될때 위에 context-param에 등록되어있는 정보를 참고하도록 되어있다 param-value에 있는 class를 참고한다. ApplicationConfig -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>mvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextClass</param-name>
+			<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>kr.or.connect.guestbook.config.WebMvcContextConfiguration
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 요청이 수행되기 전, 응답이 나가기 전에 한번씩 걸쳐서 수행을 할 수 있도록 함 -->
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
